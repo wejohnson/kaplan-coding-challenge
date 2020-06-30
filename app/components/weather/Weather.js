@@ -17,9 +17,9 @@ function Weather() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const weather = await httpCall(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${weatherKey}`, 'GET', {}, {});
-    
+    const weather = await httpCall(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${weatherKey}`, 'GET', {}, {});
     setWeatherData(weather.data);
+
     const editedName = await httpCall('/word', 'GET', {}, { word: weather.data.name, operation: 'scrub' });
     setScrubbedName(editedName.data);
   };
